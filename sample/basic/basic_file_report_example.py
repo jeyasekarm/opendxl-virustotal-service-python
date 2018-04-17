@@ -2,6 +2,7 @@
 #
 # See: https://www.virustotal.com/en/documentation/public-api/#getting-file-scans
 
+from __future__ import print_function
 import os
 import sys
 
@@ -38,7 +39,7 @@ with DxlClient(config) as client:
     if res.message_type != Message.MESSAGE_TYPE_ERROR:
         # Display results
         res_dict = MessageUtils.json_payload_to_dict(res)
-        print MessageUtils.dict_to_json(res_dict, pretty_print=True)
+        print ( MessageUtils.dict_to_json(res_dict, pretty_print=True ) )
     else:
-        print "Error invoking service with topic '{0}': {1} ({2})".format(
-            request_topic, res.error_message, res.error_code)
+        print ( "Error invoking service with topic '{0}': {1} ({2})".format(
+            request_topic, res.error_message, res.error_code ) )
